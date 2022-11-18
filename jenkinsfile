@@ -1,0 +1,36 @@
+pipeline{
+
+	agent any
+
+	stages{
+
+		stage("fetch the code from git"){
+
+			steps{
+
+				git branch: 'main', changelog: false, poll: false, url: 'https://github.com/rathodakash10/test-project12.git'
+
+}
+}
+
+		stage("Install and configure Apache"){
+
+			steps{
+
+			sh 'sudo apt install apache2 -y'
+
+}
+}
+
+stage("Deploy Application"){
+
+			steps{
+
+		sh 'sudo cp -R . /var/www/html/'
+
+}
+}
+
+}
+
+}
